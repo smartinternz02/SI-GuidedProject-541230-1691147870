@@ -9,9 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="static/styles/home.css"/>
-    <title>Student Profile</title>
+    <title>Details</title>
     <style>
-      
+      table, th, td{
+        width: 30%;
+        margin-left: 20%;
+      }
     </style>
   </head>
   <body>
@@ -31,15 +34,15 @@
         <ul>
             
             <li>
-                <a href="/studentprofile" class="active">
+                <a href="/facultyprofile" >
                     <span class="icon"><i class="fas fa-desktop"></i></span>
                     <span class="item">Profile</span>
                 </a>
             </li>
             <li>
-                <a href="/studentsubmit">
+                <a href="/facultymarks" class="active">
                     <span class="icon"><i class="fas fa-user-friends"></i></span>
-                    <span class="item">Assignment</span>
+                    <span class="item">Marks</span>
                 </a>
             </li>
             
@@ -62,20 +65,17 @@
         </ul>
       </div>
       <div class="main_content">
+        {% for i in range(0, le) %}
         <table>
           <tr> 
-            <td> name </td>
-            <td> {{ name }} </td>
-          </tr>
-          <tr> 
-            <td> email </td>
-            <td> {{ email }} </td>
-          </tr>
-          <tr> 
-            <td> Username </td>
-            <td> {{ username }} </td>
+            
+            <td> <b> {{ names[i] }} </b>  </td>
+            <form action="{{ url_for('marksassign', stdname = names[i])}}" method="post"> 
+              <td> <button class="btn btn-primary"> MARKS </button> </td>
+            </form>
           </tr>
         </table>
+        {% endfor %}
         
       </div>
     </div>
